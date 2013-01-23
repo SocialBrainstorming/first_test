@@ -1,0 +1,19 @@
+<%= provide(:title, '- Welcome!') %>
+
+
+<div class="span10">
+	<% flash.each do |key, value| %>
+		<div class="alert alert-<%= key %>"><%= value %></div>
+	<% end %>
+	<div class="center hero-unit">
+		<h1>Social Brainstorming</h1>
+		<p>Welcome to the new way to brainstorm</p>
+		<p>Are you new? Please sign in!</p><br>
+		<%= link_to 'Sign  Up now!', '/signup', class: 'btn btn-primary btn-large' %><br><br>
+		<p>I just want to see some ideas</p>
+		<%= link_to 'Search ideas', '/search', class: 'btn btn-primary btn-large '%>
+	</div>
+</div>
+<div class="span2">
+	<%= render 'layouts/description' %>
+</div>

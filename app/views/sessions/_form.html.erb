@@ -1,0 +1,28 @@
+<% if flash[:alert] %>
+	<p id='notice'><%flash[:alert] = "Invalid user/password combination"%></p>
+<% end %>
+<%= form_for(:session, url: sessions_path) do |f|%>
+	<fieldset>
+		<legend>Please Sign In</legend>
+		<div class="control-group">
+			<%= f.label :email, :class => 'control-label' %>
+			<div class="controls">
+				<%= f.text_field :email, :class => 'text_field' %>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :password, :class => 'control-label' %>
+			<div class="controls">
+				<%= f.password_field :password, :class => 'text_field' %>
+			</div>
+		</div>
+
+
+		<div class="form-actions">
+			<%= f.submit 'Signin', class: 'btn btn-primary' %>
+			<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+									root_path, :class => 'btn' %>
+		</div>
+	</fieldset>
+<%end%>

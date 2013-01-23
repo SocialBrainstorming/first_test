@@ -1,0 +1,6 @@
+<% if !message.is_description %>
+<ul>
+	<a href='<%= message_path(message)%>'><span class="content"><%= message.text %></span></a>
+	<span class="timestamp"><i>created: <%= time_ago_in_words message.created_at %></i></span>
+</ul>
+<% end %>

@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="span9">
+		<%- model_class = Message -%>
+		<div class="page-header">
+			<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+		</div>
+		<dl class="dl-horizontal">
+			<dt><strong><%= model_class.human_attribute_name(:text) %>:</strong></dt>
+			<dd><%= @message.text %></dd>
+			<dt><strong>Created by:</strong></dt>
+			<dd><%= User.find_by_id(@message.user_id).username %></dd>
+			<dt><strong>In post:</strong></dt>
+			<dd><%= Post.find_by_id(@message.post_id).title %></dd>
+		</dl>
+	</div>
+	<div class="span3">
+		<legend>Messages associated to the message</legend>
+		<%= render @message.messages %>
+	</div>
+</div>
+
+<div class="form-actions">	
+	<%= link_to t('.edit', :default => t("helpers.links.edit")),
+							edit_message_path(@message), :class => 'btn' %>
+	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+							message_path(@message),
+							:method => 'delete',
+							:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+							:class => 'btn btn-danger' %>
+	<%= link_to 'Reply', new_message_path(:message => @message.remember_token, :post => @message.post.remember_token), :class => 'btn btn-primary' %>
+	<% if !@message.is_description %>
+		<%= link_to 'Back to orignal message', Post.find_by_id(@message.post_id), :class => 'btn btn-primary' %>
+	<%end%>
+</div>

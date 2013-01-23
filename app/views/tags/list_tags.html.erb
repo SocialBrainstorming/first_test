@@ -1,0 +1,64 @@
+<%= provide(:title, '- Across tags') %>
+
+<script type="text/javascript">
+	function changeClass(id_val)
+	{
+		if(document.getElementById(id_val).className == 'btn btn-success')
+		{
+			document.getElementById(id_val).className = 'btn';
+		}
+		else
+		{
+			document.getElementById(id_val).className = 'btn btn-success';
+		}
+	}
+
+</script>
+<h1>Select your tags</h1>
+<p>Drag and drop your tags of your interest to see the brainstorms associate to them that are happen right now</p>
+<div class="row">
+	<legend>Search by text</legend>
+	<div class="span1"></div>
+	<div class="span5">
+			<input type="text" class="input-my-search">
+	</div>
+	<div class="span5">
+		<a class="btn btn-primary btn-large">Search ideas</a>
+	</div>	
+</div>
+<div class="row"><br><legend></legend></div>
+<div class="row">
+	<legend>Select themes of your interest</legend>
+	<%
+		counter = 0 
+	%>
+	<%
+	@category.each do |cat| 
+		tags_list = cat.tags %>
+		<% if counter == 0 %>
+			<div class="span2">
+				<ul>
+		<% end %>
+					<il><legend><%=cat.name%></legend></il>
+		<% tags_list.each do |tag| %>
+			        		<il>
+			        			<a id="tag-list-<%= tag.id %>" class="btn" onClick="changeClass(id)" style="width: 100px"> <%= tag.name %></a>
+			        		</il>
+		<% end %>
+					<il style="none"><br><br></il>
+			<% if counter == @category_count %>
+				</ul>			
+		     	 </div>
+			<% 
+		      		counter = 0	
+			  else
+			  	counter += 1
+			 end 
+			 %>
+	 <% 
+	 	end 
+	%>
+	<% if @category_count != 6%>
+		<div class="span2"></div>
+	<% end %>
+</div>

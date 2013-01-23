@@ -1,0 +1,11 @@
+<%= provide(:title, '- Creating a new account') %>
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
+                                 :default => "Creating a new account") %></h1>
+</div>
+<div class="row">
+	<div class="span6 offset3">
+		<%= render :partial => 'form' %>
+	</div>
+</div>

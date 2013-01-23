@@ -1,0 +1,17 @@
+<%= form_for @message, :html => { :class => 'form-horizontal' } do |f| %>
+	<%= render 'shared/error_messages' %>
+	<div class="control-group">
+		<%= f.label :text, :class => 'control-label' %>
+		<div class="controls">
+			<%= f.text_area :text, :id=>'post_area', :class => 'text_area' %>
+			<%= f.hidden_field :token, :value=>@post.remember_token %>
+			<%= f.hidden_field :token_message, :value=>@father_message.remember_token	%>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<%= submit_tag 'Create message', :class => 'btn btn-primary' %>
+		<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+								messages_path, :class => 'btn' %>
+	</div>
+<% end %>

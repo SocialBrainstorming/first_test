@@ -1,0 +1,50 @@
+<script type="text/javascript">
+	function test()
+	{
+		alert('test');
+	}
+</script>
+
+
+<%= form_for @idea, :url=>posts_path,  :html => { :class => 'form-vertical' } do |f| %>
+	<%= render 'shared/error_messages' %>
+<div class="row">
+	<div class="span9">
+		<div class="control-group">
+			<%= f.label :title, :class => 'control-label' %>
+			<div class="controls">
+				<%= f.text_field :title, :class => 'text_field' %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :text, :class => 'control-label' %>
+			<div class="controls">
+				<%= f.text_area :text, :id=>'post_area', :class => 'text_area' %>
+			</div>
+		</div>	
+	</div>
+	<div class="span3">
+		<div class="control-group">
+			<%= f.label :category_id, class: 'control-label' %>
+			<div class="controls">
+				<% if @categories %>
+					<%= f.select :category_id, @categories.collect {|c| [ c.name, c.id ] }, :include_blank=>true  %>
+				<% end %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :tag_id, class: 'control-label' %>
+			<div class="controls">
+				<% if @tags %>
+					<%= f.select :tag_id, @tags.collect {|t| [t.name, t.id]}, :include_blank=>true %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="form-actions">
+		<%= f.submit nil, :class => 'btn btn-primary' %>
+		<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+								posts_path, :class => 'btn' %>
+	</div>
+<% end %>

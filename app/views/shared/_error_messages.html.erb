@@ -1,0 +1,67 @@
+<% if @user %>
+	<% if @user.errors.any?  %>
+		<div id='error_explanation'>
+			<div class="alert alert-error">
+				The form contains <%= pluralize(@user.errors.count, 'error(s)') %>
+			</div>
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
+<% end %>
+
+<% if @post %>
+	<% if @post.errors.any?  %>
+		<div id='error_explanation'>
+			<div class="alert alert-error">
+				The form contains <%= pluralize(@post.errors.count, 'error(s)')  %>
+			</div>
+			<ul>
+				<% @post.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
+<% end %>
+
+<% if @idea %>
+	<% if @idea.errors.any?  %>
+		<div id='error_explanation'>
+			<div class="alert alert-error">
+				The form contains <%= pluralize(@idea.errors.count, 'error(s)')  %>
+			</div>
+			<ul>
+				<% @idea.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
+<% end %>
+
+<% if @message %>
+	<% if @message.errors.any?  %>
+		<div id='error_explanation'>
+			<div class="alert alert-error">
+				The form contains <%= pluralize(@message.errors.count, 'error(s)') %>
+			</div>
+			<ul>
+				<% @message.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
+<% end %>

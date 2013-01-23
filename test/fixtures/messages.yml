@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  text: MyText
+  price: 1
+  payed: false
+
+two:
+  text: MyText
+  price: 1
+  payed: false
