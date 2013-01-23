@@ -15,6 +15,7 @@ MiniMysql::Application.routes.draw do
 	match '/newidea', 		to: 'posts#new'
 	match '/ownposts',		to: 'users#ownposts'
 	match '/newpost',		to: 'posts#show'
+	match '/ideas',			to: 'posts#index'
 
 	get 'admin'		=> 'admin#index'
 
